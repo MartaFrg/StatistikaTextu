@@ -11,13 +11,15 @@ namespace StatistikaTextu
     {
         static void Main(string[] args)
         {
-            var text = "Tohle je pokusný text pro statistiku.";
-            var serazenaPismena = text.GroupBy(x => x);
+            var text = "Tohle je pokusný text pro STATISTIKU.";
+            var serazenaPismena = text.ToUpper().GroupBy(x => x);
             Console.WriteLine($"Spočtená písmena v textu \"{text}\" ");
             foreach (var item in serazenaPismena.OrderBy(x=>x.Key))
             {
                 Console.WriteLine(item.Key + " " + item.Count());
             }
+            Console.WriteLine($"Počet velkých písmen: {text.Count(Char.IsUpper)} ");
+            Console.WriteLine($"Počet mezer: {text.Count(Char.IsWhiteSpace)} ");
             Console.ReadLine();
         }
     }
